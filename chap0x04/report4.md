@@ -158,7 +158,7 @@ for example:
   bash $1 -u "/ksc.html"	display top 100 access hosts
 ``` 
 - 统计数据结果
-  [result_data.md](./result_data.md)
+  [task3_result](task3_result.md)
 ## 课内作业
 
    题目：求2个数的最大公约数，要求：
