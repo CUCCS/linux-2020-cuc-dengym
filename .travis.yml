@@ -1,0 +1,81 @@
+language: bash
+
+before_install:
+  - sudo apt-get update && sudo apt-get install -y shellcheck
+  - sudo apt-get install imagemagick
+
+# -wget -P tasks/  "https://c4pr1c3.gitee.io/linuxsysadmin/exp/chap0x04/web_log.tsv.7z"
+  - sudo apt install p7zip-full
+  - 7z x chap0x04/web_log.tsv.7z -ochap0x04/  
+
+script:
+  # show help information
+  - bash chap0x04/shells/task1.sh -h
+  - ls chap0x04/imagetest
+
+  # compress jpeg images
+  - bash chap0x04/shells/task1.sh -f chap0x04/imagetest -q 50
+  - ls chap0x04/imagetest
+
+  # resize jpeg/png/sug images
+  - bash chap0x04/shells/task1.sh -f chap0x04/imagetest -r 40
+  - ls chap0x04/imagetest
+
+  # add watermark into images
+  - bash chap0x04/shells/task1.sh -f chap0x04/imagetest -t "cuc-dym"
+  - ls chap0x04/imagetest
+
+  # add prefix in to images
+  - bash chap0x04/shells/task1.sh -f chap0x04/imagetest -p "cuc"
+  - ls chap0x04/imagetest
+
+  # add suffix in to images
+  - bash chap0x04/shells/task1.sh -f chap0x04/imagetest -s "information_security"
+  - ls chap0x04/imagetest
+
+  # change png/svg to jpg
+  - bash chap0x04/shells/task1.sh -f chap0x04/imagetest -c
+
+
+#task2
+  - bash chap0x04/shells/task2.sh -h
+  - bash chap0x04/shells/task2.sh -a chap0x04/worldcupplayerinfo.tsv
+  - bash chap0x04/shells/task2.sh -b chap0x04/worldcupplayerinfo.tsv
+  - bash chap0x04/shells/task2.sh -d chap0x04/worldcupplayerinfo.tsv
+  - bash chap0x04/shells/task2.sh -c chap0x04/worldcupplayerinfo.tsv
+
+
+#task3
+  - bash chap0x04/shells/task3.sh -h
+  - bash chap0x04/shells/task3.sh -a 
+  - bash chap0x04/shells/task3.sh -b 
+  - bash chap0x04/shells/task3.sh -c
+  - bash chap0x04/shells/task3.sh -d 
+  - bash chap0x04/shells/task3.sh -e 
+  - bash chap0x04/shells/task3.sh  -u  "/ksc.html"
+  - bash chap0x04/shells/task3.sh  -u  "/"
+
+
+
+after script:
+  - shellcheck chap0x04/shells/task1.sh
+  - shellcheck chap0x04/shells/task2.sh
+  - shellcheck chap0x04/shells/task3.sh
+
+
+ # this is some examples about shell language that used in the class
+ # - ls chap0x04/examples -l
+ # - bash chap0x04/examples/test.sh
+ # - ls chap0x04/examples -l  
+ # - cat examples/file 
+
+
+notifications:
+
+
+
+   email:
+
+
+
+      on_success: never
